@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/cheggaaa/pb"
-	"github.com/zach-klippenstein/goadb"
+	adb "github.com/tablebird/goadb"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

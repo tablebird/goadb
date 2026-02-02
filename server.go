@@ -7,8 +7,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/zach-klippenstein/goadb/internal/errors"
-	"github.com/zach-klippenstein/goadb/wire"
+	"github.com/tablebird/goadb/internal/errors"
+	"github.com/tablebird/goadb/wire"
 )
 
 const (
