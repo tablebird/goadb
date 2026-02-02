@@ -38,6 +38,7 @@ See Conn for more details.
 */
 type Scanner interface {
 	io.Closer
+	io.Reader
 	StatusReader
 	ReadMessage() ([]byte, error)
 	ReadUntilEof() ([]byte, error)
@@ -83,6 +84,10 @@ func (s *realScanner) NewSyncScanner() SyncScanner {
 
 func (s *realScanner) Close() error {
 	return errors.WrapErrorf(s.reader.Close(), errors.NetworkError, "error closing scanner")
+}
+
+func (s *realScanner) Read(p []byte) (n int, err error) {
+	return s.reader.Read(p)
 }
 
 var _ Scanner = &realScanner{}

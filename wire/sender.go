@@ -9,6 +9,8 @@ import (
 
 // Sender sends messages to the server.
 type Sender interface {
+	io.Writer
+
 	SendMessage(msg []byte) error
 
 	NewSyncSender() SyncSender
@@ -26,6 +28,10 @@ func NewSender(w io.WriteCloser) Sender {
 
 func SendMessageString(s Sender, msg string) error {
 	return s.SendMessage([]byte(msg))
+}
+
+func (s *realSender) Write(p []byte) (n int, err error) {
+	return s.writer.Write(p)
 }
 
 func (s *realSender) SendMessage(msg []byte) error {
